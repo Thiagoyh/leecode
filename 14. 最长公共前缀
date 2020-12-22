@@ -1,0 +1,26 @@
+class Solution {
+public:
+string longestCommonPrefix(vector<string>& strs) {
+	vector<string>::size_type size = strs.size();
+    if(size == 0) return "";
+	vector<string>::size_type i = 0;
+	string::size_type min_length = 1000;
+	while (i != size)
+	{
+		min_length = strs[i].size() < min_length ? strs[i].size() : min_length;
+		++i;
+	}
+	string::size_type j = 0;
+	while (j != min_length)
+	{
+		for (i = 0; i != size - 1; ++i)
+		{
+			if (strs[i][j] != strs[i + 1][j]) break;
+		}
+		if (i < size - 1) break;
+		++j;
+	}
+	if (j == 0) return "";
+	else return strs[0].substr(0, j);
+}
+};
