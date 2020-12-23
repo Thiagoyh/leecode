@@ -1,0 +1,44 @@
+vector<vector<int>> threeSum1(vector<int>& nums) {
+	vector<int> result1(3,0);
+	vector<vector<int>> result;
+	sort(nums.begin(), nums.end());
+	vector<int>::size_type size = nums.size();
+	for (vector<int>::size_type i = 0; i != size; ++i)
+	{
+		if (i > 0 && nums[i] == nums[i - 1]) continue;
+		for (vector<int>::size_type j = i + 1; j != size; ++j)
+		{
+			if (j > i + 1 && nums[j] == nums[j - 1]) continue;
+			for (vector<int>::size_type k = size - 1; k != j; --k)
+			{
+				if (nums[k] < 0) break;
+				if (nums[i] + nums[j] + nums[k] == 0)
+				{
+						result1[0] = nums[i];
+						result1[1] = nums[j];
+						result1[2] = nums[k];
+						if (result.size() == 0 )
+						{
+							result.push_back(result1);
+							break;
+						}
+						else
+						{
+							//sort(result1.begin(), result1.end());
+							vector<vector<int>>::size_type m = 0;
+							while ( m != result.size())
+							{
+								//sort(result1.begin(), result1.end());
+								//sort(result[m].begin(), result[m].end());
+								if (result1 != result[m]) ++m;
+								else break;
+							}
+							if(m == result.size()) result.push_back(result1);
+							break;
+						}
+				}
+			}
+		}
+	}
+	return result;
+}
