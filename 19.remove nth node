@@ -22,7 +22,7 @@ public:
 			p = head;
 			head = head->next;
 			delete p;
-            return head;
+                return head;
 		}
         else{
 		p = head;
